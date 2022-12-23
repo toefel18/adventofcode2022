@@ -11,4 +11,10 @@ fun main() {
         .map { it.first.toSet().intersect(it.second.toSet()).first() }
         .sumOf { it.priority()}
         .let { println("Day 3 part 1 = $it") }
+
+    val lines2 = resource("input-day-3.txt").readLines()
+    lines2.chunked(3)
+        .map { setOf3 -> setOf3.map { it.toSet() }.reduce{ acc, next -> acc.intersect(next)}.first() }
+        .sumOf { it.priority() }
+        .let { println("Day 3 part 2 = $it") }
 }
